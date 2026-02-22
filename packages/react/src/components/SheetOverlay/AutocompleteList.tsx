@@ -111,7 +111,8 @@ const AutocompleteList: React.FC = () => {
         const filtered = columnValues.filter(
           (value) =>
             value.toLowerCase().startsWith(text.toLowerCase()) &&
-            value.toLowerCase() !== text.toLowerCase() // Don't show if exact match
+            value.toLowerCase() !== text.toLowerCase() && // Don't show if exact match
+            !/^\d/.test(value) // Don't show if value starts with a number
         );
         setSuggestions(filtered);
         setActiveIndex(0);
